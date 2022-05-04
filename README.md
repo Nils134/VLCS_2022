@@ -3,7 +3,7 @@ This repository contains the tutorial on the basics of image processing related 
 
 ### Descriptions
 Folder/File | Description 
-------------|-------------
+------------|--------------
 resources   | Sample images to be processed 
 1.ROI_detection_tutorial.ipynb | Jupyter notebook containing the sample code of the ROI detection
 
