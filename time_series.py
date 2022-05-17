@@ -113,12 +113,14 @@ def demodulate(data):
 
 preamble = np.array([1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0])
 found = False
+start = -1
 while ((not found) and (len(values) > 1)):
     for i in range(0, len(values)-16):
         if (np.array_equal(preamble, np.array(values[i:i+16]))):
             found = True
-            print("Found at " + str(i))
-            #break
+            start = i
+        
+            break
     if (not found):
         values2 = []
         a = False
@@ -128,11 +130,11 @@ while ((not found) and (len(values) > 1)):
                 continue
             values2.append(values[x])
             a = False
-        print("Original: ", values)
+        # print("Original: ", values)
         values = values2
-        print("New: ", values2)
+        # print("New: ", values2)
 
-
+print(demodulate(values[start+16:start+32]))
 
 plt.plot(values)
 plt.show()
