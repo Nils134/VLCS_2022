@@ -8,7 +8,7 @@ import matplotlib.pyplot as plt
 
 values = []
 
-for i in range(100, 962):
+for i in range(100, 250):
     image_address = "./resources/image_" + str(i) + ".jpg"
 
     ## read the image
@@ -105,7 +105,7 @@ def demodulate(data):
     result = 0
     for i in range(0, 16):
         if (i % 2 == 0):
-            if (data[i:i+2] == 1):
+            if (np.array_equal(np.array(data[i:i+2]), np.array([0, 1]))):
                 result = result | (1 << (i // 2))
         else:
             continue 
@@ -119,7 +119,7 @@ while ((not found) and (len(values) > 1)):
         if (np.array_equal(preamble, np.array(values[i:i+16]))):
             found = True
             start = i
-        
+            print("Found at ", str(i))
             break
     if (not found):
         values2 = []
@@ -134,6 +134,7 @@ while ((not found) and (len(values) > 1)):
         values = values2
         # print("New: ", values2)
 
+print(values[start+16:start+32])
 print(demodulate(values[start+16:start+32]))
 
 plt.plot(values)
