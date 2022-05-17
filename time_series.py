@@ -101,6 +101,16 @@ for i in range(100, 962):
 
 # 0xAAAA 1010101010101010
 
+def demodulate(data):
+    result = 0
+    for i in range(0, 16):
+        if (i % 2 == 0):
+            if (data[i:i+2] == 1):
+                result = result | (1 << (i // 2))
+        else:
+            continue 
+    return result
+
 preamble = np.array([1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0])
 found = False
 while ((not found) and (len(values) > 1)):
@@ -121,5 +131,8 @@ while ((not found) and (len(values) > 1)):
         print("Original: ", values)
         values = values2
         print("New: ", values2)
+
+
+
 plt.plot(values)
 plt.show()
