@@ -22,7 +22,7 @@ int britnessB = 255; // Default: lowest brightness
 
 int tx_interval = 1;
 
-int patterns[4][4] = {{1,0,0,1}, {0,1,1,0}, {1,0,1,1}, {1,1,0,0}};
+int patterns[4][4] = {{1,0,0,0}, {0,1,1,0}, {1,0,1,1}, {1,0,1,0}};
 int pattern_count = 0;
 int bit_count = 0;
 int t0;
