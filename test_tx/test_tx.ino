@@ -4,7 +4,7 @@
 */
 #include "CRC16.h"
 
-#define F_TRANSMITTER 10 //
+#define F_TRANSMITTER 20 //
 #define DT 1000 / F_TRANSMITTER
 
 /*
@@ -115,19 +115,11 @@ void loop() {
     britnessR = (message_mod[tx_count / 8u] & (1u << (7 - (tx_count % 8u)))) == 0 ? 255 : 0;  
     tx_count++;
     analogWrite(ledR, britnessR);
-//    delayMicroseconds(DT);
     delay(DT);
-//    while( micros() < t0) {
-      
-//    }
   } else {
     Serial.println("Done");
     analogWrite(ledR, 255);
     delay(5*DT);
-//    delay(5);
-//    while( micros() <t0 + 5*DT) {
-      
-//    }
     tx_count = 0;
   }
 }
